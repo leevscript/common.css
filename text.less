@@ -1,0 +1,14 @@
+.ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mulEllipsis(@count) {
+  display: -webkit-box;
+  -webkit-line-clamp: @count;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

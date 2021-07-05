@@ -1,0 +1,70 @@
+.beforeMixin(@type, @color, @radius) {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  pointer-events: none;
+  border-radius: @radius*1px;
+
+  @media (-webkit-min-device-pixel-ratio: 2) {
+    width: 200%;
+    height: 200%;
+    border-radius: @radius*2px;
+    transform: scale(0.5);
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 3) {
+    width: 300%;
+    height: 300%;
+    border-radius: @radius*3px;
+    transform: scale(1 / 3);
+  }
+}
+
+.parentMixin() {
+  border: none !important;
+}
+
+.border(@type: solid, @color: black, @radius: 0) {
+  &::before {
+    border: 1px @type @color;
+    .beforeMixin(@type, @color, @radius);
+  }
+  .parentMixin();
+}
+
+.border-top(@type: solid, @color: black, @radius: 0) {
+  &::before {
+    border-top: 1px @type @color;
+    .beforeMixin(@type, @color, @radius);
+  }
+  .parentMixin();
+}
+
+.border-left(@type: solid, @color: black, @radius: 0) {
+  &::before {
+    border-left: 1px @type @color;
+    .beforeMixin(@type, @color, @radius);
+  }
+  .parentMixin();
+}
+
+.border-bottom(@type: solid, @color: black, @radius: 0) {
+  &::before {
+    border-bottom: 1px @type @color;
+    .beforeMixin(@type, @color, @radius);
+  }
+  .parentMixin();
+}
+
+.border-right(@type: solid, @color: black, @radius: 0) {
+  &::before {
+    border-right: 1px @type @color;
+    .beforeMixin(@type, @color, @radius);
+  }
+  .parentMixin();
+}
